@@ -1,6 +1,6 @@
 class Booking < ApplicationRecord
   belongs_to :user
-  belongs_to :listing
+  belongs_to :listing, foreign_key: :user_id
   after_create :calculate_duration_and_total_price
 
   private
