@@ -6,3 +6,11 @@
 <% if user_signed_in? %>
   <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
 <% end %>
+<hr>
+<% if user_signed_in? %>
+  <%= link_to 'Add New Listing', new_listing_path %>
+<% end %>
+<br>
+<%= link_to "View All Listings", listings_path %>
+<br>
+<%= link_to 'Go back to Home', root_path %>

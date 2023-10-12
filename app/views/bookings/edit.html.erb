@@ -1,0 +1,17 @@
+<h1>Edit Booking</h1>
+
+<%= form_for @booking do |f| %>
+  <div>
+    <%= f.label :check_in %>
+    <%= f.date_field :check_in %>
+  </div>
+
+  <div>
+    <%= f.label :check_out %>
+    <%= f.date_field :check_out %>
+  </div>
+
+  <div>
+    <%= f.submit 'Update Booking' %>
+  </div>
+<% end %>

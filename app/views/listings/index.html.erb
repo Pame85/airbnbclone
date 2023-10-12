@@ -1,0 +1,16 @@
+<h1>All Listings</h1>
+
+<% @listings.each do |listing| %>
+  <h3><%= listing.title %></h3>
+  <p><%= listing.description %></p>
+  <p>Price: <%= listing.price %></p>
+  <p>Location: <%= listing.location %></p>
+
+  <% if current_user != listing.user %>
+    <%= link_to "Book Now", new_booking_path(listing_id: listing.id), class: "btn btn-primary" %>
+  <% end %>
+  <hr>
+<% end %>
+<%= link_to 'Add New Listing', new_listing_path %>
+<br>
+<%= link_to 'Go back to Home', root_path %>
