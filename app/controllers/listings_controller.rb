@@ -3,10 +3,25 @@ class ListingsController < ApplicationController
 
   def index
     @listings = Listing.all
+
+    if params[:availability].present?
+      @listings = @listings.where(availability: params[:availability])
+    end
+
+    if params[:location].present?
+      @listings = @listings.where("location ILIKE ?", "%#{params[:location]}%")
+    end
+
+    if params[:check_in].present? && params[:check_out].present?
+      check_in_date = Date.parse(params[:check_in])
+      check_out_date = Date.parse(params[:check_out])
+      @listings = @listings.joins(:bookings).where.not("bookings.check_out < ? OR bookings.check_in > ?", check_in_date, check_out_date)
+    end
   end
 
   def show
     @listing = Listing.find(params[:id])
+    @reviews = @listing.reviews
   end
 
   def new

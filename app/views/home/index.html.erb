@@ -16,3 +16,25 @@
 <%= link_to "View Booking", bookings_path %>
 <br>
 <%= link_to 'Go back to Home', root_path %>
+<hr>
+<%= form_tag listings_path, method: :get do %>
+  <div>
+    <%= label_tag :availability, "Availability" %>
+    <%= select_tag :availability, options_for_select([["All", ""], ["Available", "available"], ["Not Available", "not_available"]]) %>
+  </div>
+  <div>
+    <%= label_tag :location, "Location" %>
+    <%= text_field_tag :location %>
+  </div>
+  <div>
+    <%= label_tag :check_in, "Check-in Date" %>
+    <%= date_field_tag :check_in %>
+  </div>
+  <div>
+    <%= label_tag :check_out, "Check-out Date" %>
+    <%= date_field_tag :check_out %>
+  </div>
+  <div>
+    <%= submit_tag "Filter Listings" %>
+  </div>
+<% end %>

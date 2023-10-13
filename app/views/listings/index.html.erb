@@ -5,10 +5,11 @@
   <p><%= listing.description %></p>
   <p>Price: <%= listing.price %></p>
   <p>Location: <%= listing.location %></p>
-
+<br>
   <% if current_user != listing.user %>
     <%= link_to "Book Now", new_booking_path(listing_id: listing.id), class: "btn btn-primary" %>
   <% end %>
+  <br>
   <hr>
 <% end %>
 <%= link_to 'Add New Listing', new_listing_path %>
