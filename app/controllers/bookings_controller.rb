@@ -40,7 +40,7 @@ class BookingsController < ApplicationController
       if listing.present?
         overlap_bookings = listing.bookings.where(check_in: ci_date..co_date)
           .or(listing.bookings.where(check_out: ci_date..co_date))
-        overlap_bookings.blank?
+        overlap_bookings.nil?
       else
         false
       end
