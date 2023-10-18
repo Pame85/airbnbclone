@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
   #   else
   #     redirect_to listings_path(@listing), notice: "Booking failed"
   #   end
-  # end
+  end
 
   private
     def booking_params
