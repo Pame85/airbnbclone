@@ -1,13 +1,20 @@
 class ReviewsController < ApplicationController
 
-  def create
+  def new
     @listing = Listing.find(params[:listing_id])
-    @reviews = @listing.review.new(review_params)
+    @review = Review.new
+  end
+
+  def create
+    # binding.break
+    @review = Review.new(review_params)
+    @review.listing_id = params[:listing_id]
     @review.user = current_user
     if @review.save
       redirect_to @listing, notice: 'Review was successfully created.'
     else
-      # Handle validation errors and render the appropriate view
+      puts @review.errors.full_messages
+      render :new
     end
   end
 
@@ -16,5 +23,11 @@ class ReviewsController < ApplicationController
     @listing = @review.listing
     @review.destroy
     redirect_to @listing, notice: 'Review was successfully destroyed.'
+  end
+
+  private
+
+  def review_params
+    params.require(:review).permit(:content)
   end
 end

@@ -1,21 +1,9 @@
 <h1>this is home</h1>
 <p>Thie is the home index for the fake airbnb</p>
 
-<%= link_to 'Login', new_user_session_path %>
-
 <% if user_signed_in? %>
   <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
 <% end %>
-<hr>
-<% if user_signed_in? %>
-  <%= link_to 'Add New Listing', new_listing_path %>
-<% end %>
-<br>
-<%= link_to "View All Listings", listings_path %>
-<br>
-<%= link_to "View Booking", bookings_path %>
-<br>
-<%= link_to 'Go back to Home', root_path %>
 <hr>
 <%= form_tag listings_path, method: :get do %>
   <div>

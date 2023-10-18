@@ -1,0 +1,8 @@
+<%= form_with(model: [@listing, @review], url: listing_reviews_path(@listing), method: :post) do |form| %>
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <%= form.submit "Submit Review" %>
+<% end %>

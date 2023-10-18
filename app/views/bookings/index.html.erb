@@ -5,8 +5,5 @@
   <p>Check-out: <%= booking.check_out %></p>
   <p>Duration: <%= booking.duration %> days</p>
   <p>Total Price: <%= booking.total_price %></p>
-  <hr>
+    <%= link_to t('bookings.leave_review'), new_listing_review_path(booking.listing_id, booking_id: booking.id) %>
 <% end %>
-<%= link_to "View Listing", listings_path %>
-<br>
-<%= link_to 'Go back to Home', root_path %>

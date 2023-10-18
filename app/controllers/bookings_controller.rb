@@ -12,7 +12,12 @@ class BookingsController < ApplicationController
   def create
     # binding.break
     @listing = Listing.find_by(id: params[:booking][:listing_id])
+    puts "Listing ID: #{@listing&.id}"
+
     @booking = current_user.bookings.new(booking_params)
+    puts "Booking Check-in: #{@booking&.check_in}"
+    puts "Booking Check-out: #{@booking&.check_out}"
+    
     @booking.listing_id = @listing.id
 
     if available_dates?(@booking.check_in, @booking.check_out, @listing)
@@ -28,7 +33,7 @@ class BookingsController < ApplicationController
 
   private
     def booking_params
-      params.require(:booking).permit(:listing_in, :check_in, :check_out)
+      params.require(:booking).permit(:listing_id, :check_in, :check_out)
     end
 
     def available_dates?(ci_date, co_date, listing)
@@ -40,4 +45,5 @@ class BookingsController < ApplicationController
         false
       end
     end
+    
 end
