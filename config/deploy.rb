@@ -16,8 +16,8 @@ set :log_level,     :debug
 set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml', 'config/puma.rb', 'config/master.key', 'sockets/puma.sock')
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads', 'sockets')
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml', 'config/puma.rb', 'config/master.key')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
 # Skip Sprockets build in favour of Webpacker.
 Rake::Task['deploy:assets:backup_manifest'].clear_actions
