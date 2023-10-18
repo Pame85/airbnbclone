@@ -88,3 +88,5 @@ gem "devise"
 gem "jquery-rails"
 gem "aws-sdk-s3"
 
+gem "bcrypt_pbkdf", require: false
+gem "ed25519", require: false
